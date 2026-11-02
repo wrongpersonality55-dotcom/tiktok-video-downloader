@@ -258,3 +258,37 @@ modal.addEventListener("click", (e) => {
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && !modal.hidden) closeModal();
 });
+
+/* ---------- Install as app (PWA) ---------- */
+const installBtn = $("installBtn");
+const iosTip = $("iosTip");
+let installEvent = null;
+
+if ("serviceWorker" in navigator && location.protocol !== "file:") {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+
+const isStandalone = () =>
+  window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  installEvent = e;
+  if (!isStandalone()) installBtn.hidden = false;
+});
+
+installBtn.addEventListener("click", async () => {
+  if (!installEvent) return;
+  installEvent.prompt();
+  await installEvent.userChoice;
+  installEvent = null;
+  installBtn.hidden = true;
+});
+
+window.addEventListener("appinstalled", () => {
+  installBtn.hidden = true;
+  showToast("App install ho gayi");
+});
+
+// iPhone/iPad Safari has no install prompt, so show the manual steps
+if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !isStandalone()) iosTip.hidden = false;

@@ -211,6 +211,26 @@ body {
 .btn-mp4:hover { box-shadow: 0 16px 44px rgba(25, 227, 255, 0.5); }
 .btn-mp3:hover { box-shadow: 0 16px 44px rgba(125, 255, 106, 0.5); }
 
+/* Install */
+.install {
+  display: block;
+  margin: 18px auto 0;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-line);
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--text);
+  font: 600 0.9rem "Poppins", sans-serif;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.3s, border-color 0.3s;
+}
+.install[hidden] { display: none; }
+.install:hover { transform: translateY(-3px); border-color: var(--neon-cyan); box-shadow: 0 0 28px rgba(25, 227, 255, 0.4); }
+.ios-tip { margin-top: 14px; text-align: center; color: var(--muted); font-size: 0.82rem; }
+.ios-tip[hidden] { display: none; }
+
 /* Modal */
 .modal {
   position: fixed;
