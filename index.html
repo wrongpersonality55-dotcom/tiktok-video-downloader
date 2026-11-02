@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>All-in-One Downloader</title>
+  <meta name="description" content="Download videos and audio from Facebook, YouTube and TikTok.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
+  <div class="orb orb-c" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <header class="brand">
+      <h1>All-in-One <span class="grad">Downloader</span></h1>
+      <p>Paste a TikTok link. Get the video, the audio or the photos.</p>
+    </header>
+
+    <section class="card" id="card">
+      <label class="field" id="field" for="urlInput">
+        <span class="badge" id="badge" aria-live="polite"></span>
+        <input id="urlInput" type="url" inputmode="url" autocomplete="off" spellcheck="false"
+               placeholder="Paste TikTok link here">
+        <button class="clear" id="clearBtn" type="button" aria-label="Clear link" hidden>&times;</button>
+      </label>
+
+      <p class="hint" id="hint" role="status"></p>
+
+      <div class="actions" id="actions" hidden>
+        <button class="btn btn-hd" data-type="hd" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+          <span>Download HD MP4</span>
+        </button>
+        <button class="btn btn-mp4" data-type="mp4" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+          <span>Download MP4</span>
+        </button>
+        <button class="btn btn-mp3" data-type="mp3" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm11-2a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>Download MP3 Audio</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h2 id="modalTitle">Ye tasveer wala post hai</h2>
+      <p>Is TikTok post me tasveerein aur music hai. Aap kya download karna chahte hain?</p>
+      <div class="modal-actions">
+        <button class="btn btn-hd" data-slide="images" type="button">Sirf Tasveer Download Karein</button>
+        <button class="btn btn-mp3" data-slide="audio" type="button">Sirf Audio Download Karein</button>
+        <button class="btn btn-mp4" data-slide="video" type="button">Dono Ek Sath Video Me Download Karein</button>
+      </div>
+      <button class="modal-close" data-close type="button" aria-label="Close">&times;</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
